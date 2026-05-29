@@ -4,8 +4,8 @@
 > 把模块和知识点替换成你自己的内容即可。
 >
 > 如果你的技术栈和示例完全不同（比如 Java / Go / 前端），也可以用这个空白模板重新开始：
-> 1. 备份或删除现有的 `interview_tracker.md`
-> 2. 把此文件复制为 `interview_tracker.md`
+> 1. 备份或删除现有的 `knowledge/interview_tracker.md`
+> 2. 把此文件复制为 `knowledge/interview_tracker.md`
 > 3. 填入你的模块和知识点
 
 ## 模块定义

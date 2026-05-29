@@ -89,7 +89,7 @@ ai-interview-engine/
 │   ├── interview_tracker.md     # C++ example question bank (replace with yours)
 │   └── TEMPLATE.md              # Blank template
 └── memory/
-    ├── MEMORY.md                # Memory index (auto-maintained)
+    ├── MEMORY.md                # Memory index
     └── user_profile.md          # User profile template
 ```
 
