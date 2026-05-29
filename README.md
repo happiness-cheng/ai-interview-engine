@@ -83,8 +83,7 @@ ai-interview-engine/
 ├── CLAUDE.md                    # 入口：全局规则 + 使用说明
 ├── README.md                    # 你正在看的这个文件
 ├── rules/
-│   ├── interview.md             # 核心规则：严格学习流程（三步法 + 遗忘曲线）
-│   └── corrections-core.md      # 纠错规则：禁止虚构 + 先搜后做
+│   └── interview.md             # 核心规则：严格学习流程（三步法 + 遗忘曲线）
 ├── knowledge/
 │   ├── interview_tracker.md     # C++ 示例题库（可替换为你的技术栈）
 │   └── TEMPLATE.md              # 空白模板

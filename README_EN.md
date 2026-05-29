@@ -84,8 +84,7 @@ ai-interview-engine/
 ├── README.md                    # Chinese docs
 ├── README_EN.md                 # English docs (this file)
 ├── rules/
-│   ├── interview.md             # Core: strict learning flow + spaced repetition
-│   └── corrections-core.md      # Correction rules: no fabrication, search first
+│   └── interview.md             # Core: strict learning flow + spaced repetition
 ├── knowledge/
 │   ├── interview_tracker.md     # C++ example question bank (replace with yours)
 │   └── TEMPLATE.md              # Blank template
