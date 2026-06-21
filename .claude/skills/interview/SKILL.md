@@ -5,7 +5,7 @@ disable-model-invocation: true
 argument-hint: "[学习主题和目标，例如：C++ 后端，大厂实习]"
 ---
 
-# AI Interview Engine v0.3.3
+# AI Interview Engine v0.3.6
 
 ## 本次学习目标
 
