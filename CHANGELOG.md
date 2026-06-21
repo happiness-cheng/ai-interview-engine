@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.3.4 (2026-06-21)
+
+### Changed
+- user_profile.md 改为 example 模板 + 本地数据文件，.gitignore 保护个人数据
+- 独立安装命令增加 mkdir -p 和 PowerShell 版本
+- 「M2 模块」改为「项目深挖模块，编号不固定」
+- 「ChatGPT 不纠错」改为「普通 AI 默认不保证长期教学闭环」
+- 隐私保护默认建议 .git/info/exclude，不静默修改 .gitignore
+
+### Added
+- argument-hint 和显式 \$ARGUMENTS 支持
+- 主题文件名规范化（移除非法字符，禁止路径穿越）
+- C++ 示例知识地图接入初始化流程（优先读取 examples/）
+
+### Fixed
+- SKILL.md 版本号同步为 v0.3.3
+- user_profile.md 隐私保护（与 Tracker 同级保护）
+
 ## v0.3.3 (2026-06-21)
 
 ### Changed
