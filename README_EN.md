@@ -112,7 +112,7 @@ Progress saved in files, persists across sessions:
 
 ```
 Day 1: Pimpl core mechanism -> Good
-Day 3: Auto-reminder -> copy semantics -> Hard
+Day 3: Auto-check on restart -> copy semantics -> Hard
 Day 7: Restart -> "Last time copy semantics were unstable, verify first today"
 ```
 
