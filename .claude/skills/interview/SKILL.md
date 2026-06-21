@@ -1,6 +1,7 @@
 ---
 name: interview
 description: 在当前单一主题内进行渐进式教学、面试追问、知识网络构建、错题修复和间隔复习，并维护独立学习 tracker。
+disable-model-invocation: true
 ---
 
 # Interview Skill V3

@@ -1,10 +1,17 @@
----
-description: AI 面试引擎 — 基于认知科学的智能面试备考系统
----
-
 # AI Interview Engine
 
 > 不是陪聊，是严师。不是刷题，是建知识网络。
+
+## 产品形态
+
+本仓库是一个**完整的学习工作区**。Fork 后直接用 Claude Code 打开即可。
+
+它也可以作为**独立 Skill** 安装到任意项目（见 README 的"安装为独立 Skill"章节）。
+
+## 启动方式
+
+Claude Code 启动时自动加载本文件（CLAUDE.md），本文件要求加载学习规则（SKILL.md）。
+用户也可以在已安装 Skill 的项目中使用 `/interview` 命令触发。
 
 ## 第一次对话
 
@@ -17,7 +24,7 @@ description: AI 面试引擎 — 基于认知科学的智能面试备考系统
 每次会话开始时，**必须先读取**：
 
 1. `SKILL.md` — 完整学习流程（分层教学、评分、复习调度、知识网络）
-2. `knowledge/interview_tracker.md` — 知识点题库与复习调度表
+2. 当前主题的 tracker（首次对话时创建，路径见 SKILL.md）
 
 按需读取（不要默认全部加载）：
 

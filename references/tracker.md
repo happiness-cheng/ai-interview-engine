@@ -3,7 +3,7 @@
 ## 文件命名
 
 ```
-~/.claude/interview_tracker_{主题}.md
+knowledge/trackers/{主题}.md
 ```
 
 每个主题一个独立文件。

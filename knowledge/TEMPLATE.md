@@ -1,12 +1,11 @@
 # 面试学习追踪系统 — 空白模板
 
-> **使用方式**：直接编辑 `knowledge/interview_tracker.md`（仓库自带的 C++ 示例），
-> 把模块和知识点替换成你自己的内容即可。
+> **使用方式**：
+> 1. 复制此文件为 `knowledge/trackers/{你的主题}.md`
+> 2. 填入你的模块和知识点
+> 3. 告诉 Claude "我要准备 {你的主题} 面试，开始复习"
 >
-> 如果你的技术栈和示例完全不同（比如 Java / Go / 前端），也可以用这个空白模板重新开始：
-> 1. 备份或删除现有的 `knowledge/interview_tracker.md`
-> 2. 把此文件复制为 `knowledge/interview_tracker.md`
-> 3. 填入你的模块和知识点
+> 示例：`knowledge/trackers/C++后端.md`、`knowledge/trackers/Java微服务.md`
 
 ## 学习目标
 

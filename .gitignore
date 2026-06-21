@@ -1,0 +1,13 @@
+# User learning data (personal, not for public commit)
+# Example tracker is kept for reference; user-created trackers are ignored
+knowledge/trackers/*
+!knowledge/trackers/C++后端.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~

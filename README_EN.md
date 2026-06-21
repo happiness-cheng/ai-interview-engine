@@ -1,148 +1,193 @@
 # AI Interview Engine
 
-> **Turn Claude Code into your personal interview tutor. Not a yes-man, a strict teacher who builds knowledge networks.**
+> **Turn Claude Code into your long-term interview coach. Not a yes-man, not flashcards — a knowledge network builder.**
 
-[中文文档](README.md)
+[中文文档](README.md) | [License: MIT](LICENSE)
 
 ---
 
 ## The Problem
 
-Everyone tries using ChatGPT or Claude to prepare for interviews. Everyone hits the same wall:
+Using ChatGPT to prepare for interviews:
 
-| Scenario | What you expect | What actually happens |
-|----------|----------------|----------------------|
-| You answer wrong | Point out the error + explain clearly | "Great answer!" then next question |
-| Continue the next day | Remember what you studied yesterday | Start from zero, you have to re-explain |
-| After a week of study | Know what to review | No plan, random questions |
-| After reading an explanation | Be able to say it in an interview | Reading ≠ understanding ≠ being able to articulate |
-| Learning many topics | Know how they connect | Island-style memorization, can not connect the dots |
+- You get it wrong, it says "Great answer!" and moves on
+- Next day, new conversation — it forgot everything you studied
+- You learn concepts but forget them in two days — no review plan
+- You read explanations and think you understand, but freeze in interviews
 
-**Root cause: ChatGPT is a friendly chat buddy, not a strict teacher.**
-
-It will not correct you, track your progress, schedule reviews at the forgetting curve inflection point, or verify your understanding with variant questions after you get something wrong.
+**Root cause: ChatGPT is a chat buddy, not a teacher.** It does not correct you, track progress, schedule reviews, or verify understanding.
 
 ---
 
-## The Solution: Rule Files Force AI to Be a Strict Teacher
+## See the Difference
 
-Claude Code has a unique ability: **rule files (CLAUDE.md / SKILL.md) + persistent file system**.
+###普通 AI
 
-Through a carefully designed set of rules, we transform Claude Code from "friendly chat buddy" into "strict teacher":
+```
+You: What is Pimpl?
+AI:  Pimpl (Pointer to Implementation) is a C++ design pattern that
+     reduces compile dependencies by hiding implementation details
+     behind a pointer... [wall of text with definition, code, pros/cons]
+```
 
-### Key Features
+You nod and say "got it." Three days later, the interviewer asks "why use unique_ptr for Pimpl?" — you cannot answer.
 
-**1. Layered Knowledge Delivery - Not a firehose of information**
+### AI Interview Engine
 
-Each layer is confirmed before moving to the next. Like a good teacher who waits for you to nod before continuing.
+```
+You: What is Pimpl?
 
-**2. Knowledge Network - Learn one point, connect a web**
+AI:  When you order food delivery, you only see the menu and prices.
+     You don't need to know how many cooks are in the kitchen or
+     what pots they use. Menu stays the same, kitchen can change.
 
-Not isolated memorization - knowledge expands outward along 6 relationship types: causation, prerequisites, implementation, comparison, application, and interview patterns.
+     Pimpl is the same idea: expose only the interface, hide the
+     implementation.
 
-**3. 4-Level Scoring with Error Type Distinction - Not just right/wrong**
+     Formal definition: Pimpl moves class implementation details
+     into a separate implementation class, accessed through a pointer,
+     isolating compile dependencies.
 
-Key distinction: **expression-type Hard does not regress**. If you understand correctly but use non-standard terminology, you will not be treated as not having learned it.
+     One core mechanism: The header only sees a pointer, not the
+     implementation class members, so changing implementation does
+     not trigger recompilation.
 
-**4. No Scoring for Unlearned Content - Not penalizing you for what you have not been taught**
+     Quick check: Do you know why "not seeing members" reduces
+     recompilation?
+```
 
-First encounter with a topic, you answer "I don't know" - you won't get an Again. The system switches to micro-teaching, then confirms.
+Three days later:
 
-**5. Delayed Variant Verification - Not re-asking the same question**
+```
+AI:  Last time you understood Pimpl's basic purpose, but copy semantics
+     were unstable. Today we verify that first: if a Pimpl class needs
+     value semantics, how should the copy constructor be written? Why
+     can't you use the default?
+```
 
-After getting something wrong, the system will not immediately re-ask the same question.
-
-**6. Forgetting Curve Review - Review when you are about to forget**
-
-Review angles evolve over time: core definition, reasoning & comparison, boundaries & variants, interview practice.
-
-**7. Main/Branch Line Separated Scoring - No guilt by association**
-
-Main and branch lines are scored and scheduled independently.
-
-**8. Cross-Session Persistence - Continue every time, not start from zero**
+**That is the difference: it remembers where you are weak and targets those areas.**
 
 ---
 
-## vs Competitors
+## Three Core Capabilities
 
-| Capability | ChatGPT | Anki | NotebookLM | SaaS Tools | **This Project** |
-|-----------|---------|------|------------|-----------|-----------------|
-| Layered teaching | No | No | No | No | **Yes** |
-| Knowledge network | No | No | No | No | **Yes** |
-| Error type distinction | No | No | No | Partial | **Yes** |
-| No scoring for unlearned | No | N/A | No | No | **Yes** |
-| Variant verification | No | No | No | Partial | **Yes** |
-| Cross-session memory | No | Card-level | No | Partial | **Yes** |
-| Spaced repetition | No | Yes | No | No | **Yes** |
-| Wrong then Explain then Verify | No | Answer only | No | Partial | **Yes** |
-| Questions from your code | Manual paste | N/A | Upload required | Not supported | **Native** |
-| Extra cost | No | No | No | 9-300/mo | **No** |
+### 1. Actually Teach You
 
-> This project requires Claude Code and an API key. The table compares **additional costs**, not total cost.
+Not a firehose of information — layered delivery:
+
+```
+Layer 1: Intuitive model (analogy, diagram, story)
+  -> Confirmed you understand
+Layer 2: Formal definition + core mechanism
+  -> Confirmed you can articulate it
+Layer 3: Why it works + minimal example
+  -> Confirmed you can apply it
+Layer 4: Pros/cons, interview drill, knowledge network
+```
+
+Key designs:
+- **First encounter "I don't know" is not scored** — distinguishes "never learned" from "learned but forgot"
+- **Analogy for understanding, formal model for correction** — your intuition is validated first, then formalized
+- **One question at a time** — no information overload
+
+### 2. Actually Judge Whether You Know It
+
+Not just right/wrong — four-level scoring:
+
+| Score | Meaning | What Happens Next |
+|-------|---------|-------------------|
+| **Again** | Core error or completely forgot | Re-teach differently -> variant verify -> next-day re-verify |
+| **Hard** | Direction right but key gaps | Content-type (regress) vs expression-type (supplement terms, no regress) |
+| **Good** | Core correct, logic complete | Normal progress |
+| **Easy** | Stable, accurate, transferable | Can skip levels |
+
+Key designs:
+- **Wrong answers are not re-asked** — interleaved content, then variant verification
+- **Main/branch lines scored independently** — getting Lambda wrong does not penalize your variant score
+- **Review angles evolve with stage** — 1 day: definition, 3 days: reasoning, 7 days: boundaries, 14 days+: real scenarios
+
+### 3. Actually Remember Where You Left Off
+
+Progress saved in files, persists across sessions:
+
+```
+Day 1: Pimpl core mechanism -> Good
+Day 3: Auto-reminder -> copy semantics -> Hard
+Day 7: Restart -> "Last time copy semantics were unstable, verify first today"
+```
+
+Key designs:
+- **Knowledge network** — learning Pimpl auto-connects unique_ptr, RAII, Rule of Five
+- **Spaced review** — 1 day -> 3 days -> 7 days -> 14 days -> 30 days -> 60 days
+- **Tracker persistence** — every score written immediately, not batched at the end
 
 ---
 
 ## Quick Start
 
-### 1. Fork the repo
+### Option 1: Fork the repo (recommended)
 
-\
-Or download the ZIP and extract to any directory.
+```bash
+gh repo fork happiness-cheng/ai-interview-engine --clone
+cd ai-interview-engine
+claude
+```
 
-### 2. Open with Claude Code
+Then type:
 
-\
-### 3. Start your first session
+> I'm preparing for a C++ backend engineering interview. Start reviewing.
 
-Type:
+### Option 2: Install as a standalone Skill
 
-> I am preparing for a C++ backend engineering interview. Start reviewing.
+Copy `.claude/skills/interview/` to your project:
 
-Claude will read your rule files and question bank, then start the first round of teaching.
+```bash
+cp -r .claude/skills/interview /your/project/.claude/skills/
+```
 
-### 4. Customize for your stack
+Then in your project, start Claude Code and type:
 
-- **Change tech stack**: Copy \ to \, fill in your topics
-- **Add projects**: Fill in M2 module with your project key design decisions
-- **Adjust rules**: Edit files under \ to modify teaching style, scoring criteria, etc.
+```
+/interview C++ backend, campus hire
+```
 
----
-
-## Directory Structure
-
-\
----
-
-## Use Cases
-
-- **Campus/experienced hire tech interviews** - Systematic coverage of high-frequency topics with forgetting curve consolidation
-- **Career transition interviews** - Build knowledge networks in new domains, not just memorize answers
-- **Exam preparation** - Swap the question bank, engine logic stays the same
-- **Project review** - Deep-dive design decisions from code, prepare for project-related interview questions
+> **Difference**: Option 1 is a complete workspace with example question bank and tracker. Option 2 is the pure Skill — you prepare your own question bank.
 
 ---
 
-## How It Works
+## Approach Differences
 
-### Teaching Flow
+| Approach | What it does well | Main limitation |
+|----------|-------------------|-----------------|
+| Plain AI chat | Instant explanations, free-form Q&A | No progress tracking, no review schedule, may praise wrong answers |
+| Anki | Spaced repetition, mature scheduling, proven algorithm | Not good at dynamic explanations or follow-up questions, manual card creation |
+| NotebookLM | Document-based Q&A, multi-document linking | No review loop, no scoring system, no personal progress tracking |
+| **AI Interview Engine** | Teaching, drilling, scoring, knowledge network, spaced review in one system | Requires Claude Code, needs knowledge base maintenance, not for pure碎片时间 |
 
-New knowledge: Layered delivery (intuitive, definition, mechanism, confirmation, example, drill, network)
-Old knowledge: Test first (no-hint question, score, targeted feedback on weak points)
-Wrong answer: Delayed variant verification (not re-asking the same question), next-day re-verification
+---
 
-### Scoring & Review
+## Known Limitations
 
-Scoring: Again / Hard (content-type or expression-type) / Good / Easy
-Review: 1 day, 3 days, 7 days, 14 days, 30 days, 60 days
-Angles: Core definition, Reasoning & comparison, Boundaries & variants, Interview practice
+- **Requires Claude Code** — needs Claude Code CLI or desktop app, not compatible with plain ChatGPT web
+- **API costs** — Claude Code charges by token, extended study sessions consume significant tokens
+- **Plain text tracker** — no graphical interface, progress requires opening files
+- **Single-user design** — no multi-user collaboration
+- **Scoring depends on model judgment** — scoring consistency depends on Claude's understanding, may vary
+- **No automated tests** — teaching flow correctness depends on rule file design, no automated regression testing yet
 
-### Knowledge Network
+---
 
-Anchor (current knowledge), 6 relationship types, Distinguish learned/weak/unlearned, Expand high-value branches
+## Design Principles
+
+1. **Layered delivery** — one layer at a time, confirmed before the next. Prevents information overload.
+2. **Distinguish "don't know" from "forgot"** — first encounter "I don't know" is not scored. These require completely different handling.
+3. **Distinguish understanding from expression** — correct understanding with non-standard terminology is not treated as not learned.
+4. **Never re-ask the same question** — wrong answers get variant verification, not memorization.
+5. **Main line not penalized by branches** — branch errors do not affect main line achievements.
+6. **Review angles evolve** — as mastery deepens, review shifts from definition to reasoning to boundaries to real scenarios.
 
 ---
 
 ## License
 
-MIT
+[MIT](LICENSE)
