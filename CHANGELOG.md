@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.3.6 (2026-06-21)
+
+### Changed
+- project-driven.md 重写：14 步执行路线、脚手架 S1-S4、三维验收规则、知识网络特例
+- templates/tracker.md 新增项目与实践进度表和示例
+
+### Added
+- SKILL.md 硬规则 16-18：脚手架撤除、参与度区分、用户 tracker 优先
+- 脚手架等级：S1 观察、S2 补全、S3 修改、S4 重建
+- 项目知识验收：完成度 × 参与度 × 掌握度
+
+### Fixed
+- procedural-example.md: 线程安全变式先检查 tracker，未学过不评 Hard
+
 ## v0.3.5 (2026-06-21)
 
 ### Fixed
