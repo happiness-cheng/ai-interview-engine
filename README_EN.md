@@ -21,7 +21,7 @@ Using ChatGPT to prepare for interviews:
 
 ## See the Difference
 
-###普通 AI
+### Plain AI
 
 ```
 You: What is Pimpl?
@@ -151,7 +151,7 @@ Then in your project, start Claude Code and type:
 /interview C++ backend, campus hire
 ```
 
-> **Difference**: Option 1 is a complete workspace with example question bank and tracker. Option 2 is the pure Skill — you prepare your own question bank.
+> **Difference**: Option 1 is a complete workspace with example question bank and tracker. Option 2 is a self-contained Skill package with full rules and examples — you just need to prepare your own tracker.
 
 ---
 
@@ -162,14 +162,14 @@ Then in your project, start Claude Code and type:
 | Plain AI chat | Instant explanations, free-form Q&A | No progress tracking, no review schedule, may praise wrong answers |
 | Anki | Spaced repetition, mature scheduling, proven algorithm | Not good at dynamic explanations or follow-up questions, manual card creation |
 | NotebookLM | Document-based Q&A, multi-document linking | No review loop, no scoring system, no personal progress tracking |
-| **AI Interview Engine** | Teaching, drilling, scoring, knowledge network, spaced review in one system | Requires Claude Code, needs knowledge base maintenance, not for pure碎片时间 |
+| **AI Interview Engine** | Teaching, drilling, scoring, knowledge network, spaced review in one system | Requires Claude Code, needs knowledge base maintenance, not ideal for short, fragmented study sessions |
 
 ---
 
 ## Known Limitations
 
 - **Requires Claude Code** — needs Claude Code CLI or desktop app, not compatible with plain ChatGPT web
-- **API costs** — Claude Code charges by token, extended study sessions consume significant tokens
+- **Has usage costs** — Requires a Claude subscription, Anthropic Console API credits, or a supported third-party service. Billing depends on how you access Claude Code.
 - **Plain text tracker** — no graphical interface, progress requires opening files
 - **Single-user design** — no multi-user collaboration
 - **Scoring depends on model judgment** — scoring consistency depends on Claude's understanding, may vary

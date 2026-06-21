@@ -108,7 +108,7 @@ AI：上次你理解了 Pimpl 的基本目的，但拷贝语义还不稳定。
 
 ```
 第 1 天：Pimpl 核心机制 → Good
-第 3 天：自动提醒复习 → 拷贝语义 → Hard
+第 3 天：再次启动，自动检查到期复习 → 拷贝语义 → Hard
 第 7 天：再次启动 → "上次拷贝语义不稳定，今天先验证这一点"
 ```
 
@@ -147,7 +147,7 @@ cp -r .claude/skills/interview /your/project/.claude/skills/
 /interview C++ 后端，大厂实习
 ```
 
-> **区别**：方式一是完整工作区，自带 C++ 示例题库和 Tracker。方式二是纯 Skill，需要自己准备题库。
+> **区别**：方式一是完整工作区，自带 C++ 示例题库和 Tracker。方式二是独立 Skill 包，自带完整规则和示例，但需要自己准备 Tracker。
 
 ---
 
@@ -181,8 +181,11 @@ ai-interview-engine/
 ├── .gitignore                        # 排除用户学习数据
 ├── README.md                         # 你正在看的这个文件
 ├── README_EN.md                      # English docs
-├── .claude/skills/interview/         # 可独立安装的 Skill
-│   └── SKILL.md                      # Skill 版本（含 disable-model-invocation）
+├── .claude/skills/interview/         # 独立 Skill 包（自包含，可直接复制到其他项目）
+│   ├── SKILL.md                      # Skill 定义（含 disable-model-invocation）
+│   ├── references/                   # 完整规则（随 Skill 一起复制）
+│   ├── examples/                     # 行为示例
+│   └── templates/tracker.md          # Tracker 模板
 ├── references/                       # 详细规则（按需加载，不默认全部读取）
 │   ├── teaching.md                   # 教学规则：分层释放、直观模型、面试追问链
 │   ├── knowledge-network.md          # 知识网络：锚点发散、支线分类、扫描流程
@@ -226,7 +229,7 @@ ai-interview-engine/
 ## 已知限制
 
 - **依赖 Claude Code** — 需要 Claude Code CLI 或桌面版，不支持纯网页版 ChatGPT
-- **需要 API 费用** — Claude Code 按 token 计费，长时间学习会消耗较多 token
+- **存在使用成本** — 需要 Claude 订阅、Anthropic Console API 额度或受支持的第三方服务，具体计费方式取决于登录和接入方式
 - **Tracker 为纯文本** — 没有图形化界面，进度查看需要打开文件
 - **单用户设计** — 不支持多人协作学习
 - **评分依赖模型判断** — 评分一致性取决于 Claude 的理解，可能有波动

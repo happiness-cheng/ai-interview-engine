@@ -10,29 +10,29 @@
 
 ## 启动方式
 
-Claude Code 启动时自动加载本文件（CLAUDE.md），本文件要求加载学习规则（SKILL.md）。
+Claude Code 启动时自动加载本文件（CLAUDE.md），本文件要求加载学习规则。
 用户也可以在已安装 Skill 的项目中使用 `/interview` 命令触发。
 
 ## 第一次对话
 
 1. 了解用户目标岗位、技术栈、项目经历
 2. 填入 `memory/user_profile.md`
-3. 读取 `SKILL.md`，按流程开始
+3. 读取学习规则，按流程开始
 
 ## 必读文件
 
 每次会话开始时，**必须先读取**：
 
-1. `SKILL.md` — 完整学习流程（分层教学、评分、复习调度、知识网络）
+1. `.claude/skills/interview/SKILL.md` — 完整学习流程（分层教学、评分、复习调度、知识网络）
 2. 当前主题的 tracker（首次对话时创建，路径见 SKILL.md）
 
 按需读取（不要默认全部加载）：
 
-- `references/teaching.md` — 教学规则（教授新知识前读取）
-- `references/knowledge-network.md` — 知识网络规则（准备展开关联知识时读取）
-- `references/evaluation-review.md` — 评分与复习规则（即将评分时读取）
-- `references/tracker.md` — Tracker 规范（创建或修改 tracker 时读取）
-- `references/gotchas.md` — 常见错误（用户指出执行不符合预期时读取）
+- `.claude/skills/interview/references/teaching.md` — 教学规则（教授新知识前读取）
+- `.claude/skills/interview/references/knowledge-network.md` — 知识网络规则（准备展开关联知识时读取）
+- `.claude/skills/interview/references/evaluation-review.md` — 评分与复习规则（即将评分时读取）
+- `.claude/skills/interview/references/tracker.md` — Tracker 规范（创建或修改 tracker 时读取）
+- `.claude/skills/interview/references/gotchas.md` — 常见错误（用户指出执行不符合预期时读取）
 
 ## 触发词
 
