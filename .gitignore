@@ -1,6 +1,7 @@
 # User learning data (personal, not for public commit)
 knowledge/trackers/*
 !knowledge/trackers/.gitkeep
+memory/user_profile.md
 
 # OS files
 .DS_Store

@@ -8,14 +8,14 @@
 
 ## 你一定经历过这些
 
-用 ChatGPT / Claude 准备面试：
+用普通 AI 对话准备面试：
 
 - 答错了，它说 "Great answer!" 然后下一题
 - 第二天打开新对话，它不记得你昨天学了什么
 - 学了一堆知识点，不知道什么时候该复习
 - 看完讲解觉得懂了，面试时却说不出来
 
-**根本原因：ChatGPT 是陪聊，不是老师。** 它不纠错、不记进度、不安排复习、不验证你是否真懂了。
+**根本原因：普通 AI 对话默认不是一套长期教学系统。** 它可能会纠错，但不保证持续追踪进度、安排复习，也不保证验证你是否真的掌握。
 
 ---
 
@@ -134,11 +134,20 @@ claude
 
 ### 方式二：安装为独立 Skill
 
-把 `.claude/skills/interview/` 复制到你的项目中：
+先克隆或下载本仓库，再在仓库根目录执行以下命令。
+
+Bash：
 
 ```bash
-cp -r .claude/skills/interview /your/project/.claude/skills/
+mkdir -p /your/project/.claude/skills
+cp -R .claude/skills/interview /your/project/.claude/skills/
 ```
+
+PowerShell：
+
+```powershell
+New-Item -ItemType Directory -Force C:\path	o\project\.claude\skills | Out-Null
+Copy-Item -Recurse .claude\skills\interview C:\path	o\project\.claude\skills```
 
 然后在你的项目中启动 Claude Code，输入：
 
@@ -164,7 +173,7 @@ cp -r .claude/skills/interview /your/project/.claude/skills/
 
 ### 加项目深挖
 
-在 Tracker 的 M2 模块填入你的项目关键设计决策。面试官会从简历挑细节追问，这里准备的是"为什么这样设计"而不是"用了什么技术"。
+在 Tracker 中新增或找到"项目深挖"模块，填入关键设计决策。模块编号不固定，按实际生成的 Tracker 结构为准。面试官会从简历挑细节追问，这里准备的是"为什么这样设计"而不是"用了什么技术"。
 
 ### 调规则
 
@@ -203,7 +212,8 @@ ai-interview-engine/
 │       └── C++后端.example.md
 └── memory/                           # 持久化记忆
     ├── MEMORY.md                     # 记忆索引
-    └── user_profile.md               # 用户画像模板
+    ├── user_profile.example.md       # 用户画像模板
+    └── user_profile.md               # 个人数据（已 gitignore，首次对话自动创建）
 ```
 
 ---
@@ -212,7 +222,7 @@ ai-interview-engine/
 
 | 方案 | 擅长什么 | 主要局限 |
 |------|---------|---------|
-| 普通 AI 对话 | 即时讲解、自由问答、灵活探索 | 无进度追踪、无复习调度、不纠错、答错了可能夸你对 |
+| 普通 AI 对话 | 即时讲解、自由问答、灵活探索 | 默认不保证长期纠错、进度追踪和复习闭环 |
 | Anki | 间隔重复、记忆卡片、成熟调度算法 | 不擅长动态讲解和连续追问，需要手动制卡 |
 | NotebookLM | 基于文档的问答、多文档关联 | 无复习闭环、无评分体系、不追踪个人进度 |
 | **AI Interview Engine** | 教学、追问、评分、知识网络、间隔复习统一调度 | 依赖 Claude Code，需要维护知识库，不适合纯碎片时间 |

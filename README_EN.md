@@ -15,7 +15,7 @@ Using ChatGPT to prepare for interviews:
 - You learn concepts but forget them in two days — no review plan
 - You read explanations and think you understand, but freeze in interviews
 
-**Root cause: ChatGPT is a chat buddy, not a teacher.** It does not correct you, track progress, schedule reviews, or verify understanding.
+**Root cause: Plain AI conversations are not a long-term teaching system by default.** It may correct you, but does not guarantee continuous progress tracking, review scheduling, or verification that you truly understand.
 
 ---
 
@@ -138,11 +138,20 @@ Then type:
 
 ### Option 2: Install as a standalone Skill
 
-Copy `.claude/skills/interview/` to your project:
+Clone or download this repo first, then run from the repo root:
+
+Bash:
 
 ```bash
-cp -r .claude/skills/interview /your/project/.claude/skills/
+mkdir -p /your/project/.claude/skills
+cp -R .claude/skills/interview /your/project/.claude/skills/
 ```
+
+PowerShell:
+
+```powershell
+New-Item -ItemType Directory -Force C:\path	o\project\.claude\skills | Out-Null
+Copy-Item -Recurse .claude\skills\interview C:\path	o\project\.claude\skills```
 
 Then in your project, start Claude Code and type:
 
@@ -158,7 +167,7 @@ Then in your project, start Claude Code and type:
 
 | Approach | What it does well | Main limitation |
 |----------|-------------------|-----------------|
-| Plain AI chat | Instant explanations, free-form Q&A | No progress tracking, no review schedule, may praise wrong answers |
+| Plain AI chat | Instant explanations, free-form Q&A | Does not guarantee long-term correction, progress tracking, or review closure |
 | Anki | Spaced repetition, mature scheduling, proven algorithm | Not good at dynamic explanations or follow-up questions, manual card creation |
 | NotebookLM | Document-based Q&A, multi-document linking | No review loop, no scoring system, no personal progress tracking |
 | **AI Interview Engine** | Teaching, drilling, scoring, knowledge network, spaced review in one system | Requires Claude Code, needs knowledge base maintenance, not ideal for short, fragmented study sessions |

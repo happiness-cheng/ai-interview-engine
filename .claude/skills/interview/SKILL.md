@@ -2,9 +2,14 @@
 name: interview
 description: 在当前单一主题内进行渐进式教学、面试追问、知识网络构建、错题修复和间隔复习，并维护独立学习 tracker。
 disable-model-invocation: true
+argument-hint: "[学习主题和目标，例如：C++ 后端，大厂实习]"
 ---
 
-# AI Interview Engine v0.3.2
+# AI Interview Engine v0.3.3
+
+## 本次学习目标
+
+$ARGUMENTS
 
 ## 定位与边界
 
@@ -56,18 +61,20 @@ Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzz'
 
 ### 2. 确认主题
 
-用户已明确→直接使用。不明确→询问。
+$ARGUMENTS 非空→直接使用。为空→询问。
 
 ### 3. 读取或创建 tracker
 
 已存在→读取。不存在→按以下步骤初始化：
 
 1. 创建 `knowledge/trackers/` 目录（如不存在）
-2. 检查项目是否为 Git 仓库；若是，确认 `.gitignore` 包含 `knowledge/trackers/`，不包含则追加（参考 [gitignore-snippet](templates/gitignore-snippet)）
-3. 读取 [tracker 模板](templates/tracker.md)，复制为 `knowledge/trackers/{主题}.md`
-4. 将标题占位符替换为当前主题名
-5. 根据用户目标生成初始模块和知识点范围
-6. 向用户展示模块范围，确认后开始教学
+2. 检查项目是否为 Git 仓库；若是，确认 Tracker 目录受 Git 保护。未保护时建议写入 `.git/info/exclude`（仅本机生效，不修改项目文件）；用户明确要求时也可写入 `.gitignore`（参考 [gitignore-snippet](templates/gitignore-snippet)）。修改后必须告知用户
+3. **主题文件名规范化**：移除 `/ \ : * ? " < > |` 等非法字符，禁止 `..`，去首尾空格与句点。展示名称保留原始主题名，文件名使用清洗后结果。空名称时使用 `interview-topic`。同名文件已存在时询问复用还是新建
+4. 检查 `knowledge/examples/` 是否存在匹配主题的示例知识地图。存在→展示「使用示例作为起点 / 根据目标重新生成」选项，默认使用示例并按目标岗位裁剪。不存在→继续下一步
+5. 读取 [tracker 模板](templates/tracker.md)，复制为 `knowledge/trackers/{安全文件名}.md`
+6. 将标题占位符替换为当前主题展示名
+7. 根据用户目标生成初始模块和知识点范围
+8. 向用户展示模块范围，确认后开始教学
 
 ### 4. 检查当前任务
 
