@@ -19,7 +19,7 @@ Using ChatGPT to prepare for interviews:
 
 ---
 
-## See the Difference
+## A Typical Learning Loop
 
 ### Plain AI
 
@@ -73,16 +73,15 @@ AI:  Last time you understood Pimpl's basic purpose, but copy semantics
 
 ### 1. Actually Teach You
 
-Not a firehose of information — layered delivery:
+Not a firehose of information — three-round delivery:
 
 ```
-Layer 1: Intuitive model (analogy, diagram, story)
-  -> Confirmed you understand
-Layer 2: Formal definition + core mechanism
-  -> Confirmed you can articulate it
-Layer 3: Why it works + minimal example
-  -> Confirmed you can apply it
-Layer 4: Pros/cons, interview drill, knowledge network
+Round 1: Build the foundation
+  Intuitive model -> Formal definition -> One core mechanism -> Confirmation question
+Round 2: Understand and apply
+  Why it works -> Minimal effective example -> One follow-up question
+Round 3: Deepen for interviews
+  Pros/cons or comparison -> Interview drill -> Knowledge network branches
 ```
 
 Key designs:
@@ -151,7 +150,7 @@ Then in your project, start Claude Code and type:
 /interview C++ backend, campus hire
 ```
 
-> **Difference**: Option 1 is a complete workspace with example question bank and tracker. Option 2 is a self-contained Skill package with full rules and examples — you just need to prepare your own tracker.
+> **Difference**: Option 1 is a complete learning workspace with a sample C++ knowledge map, user profile, and ready-to-use directory structure; a personal tracker is created automatically on first use. Option 2 installs only the learning engine; it creates a topic-specific tracker on first use, but does not include a pre-filled knowledge map.
 
 ---
 

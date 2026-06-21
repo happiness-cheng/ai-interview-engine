@@ -12,6 +12,10 @@ knowledge/trackers/{主题}.md
 
 ## Tracker 模板
 
+完整模板见 [templates/tracker.md](../templates/tracker.md)。
+
+核心结构：
+
 ```markdown
 # {主题} 学习追踪系统
 

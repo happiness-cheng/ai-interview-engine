@@ -60,7 +60,14 @@ Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzz'
 
 ### 3. 读取或创建 tracker
 
-不存在→按 [tracker 规范](references/tracker.md) 创建。已存在→读取。
+已存在→读取。不存在→按以下步骤初始化：
+
+1. 创建 `knowledge/trackers/` 目录（如不存在）
+2. 检查项目是否为 Git 仓库；若是，确认 `.gitignore` 包含 `knowledge/trackers/`，不包含则追加（参考 [gitignore-snippet](templates/gitignore-snippet)）
+3. 读取 [tracker 模板](templates/tracker.md)，复制为 `knowledge/trackers/{主题}.md`
+4. 将标题占位符替换为当前主题名
+5. 根据用户目标生成初始模块和知识点范围
+6. 向用户展示模块范围，确认后开始教学
 
 ### 4. 检查当前任务
 

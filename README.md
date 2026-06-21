@@ -146,7 +146,7 @@ cp -r .claude/skills/interview /your/project/.claude/skills/
 /interview C++ 后端，大厂实习
 ```
 
-> **区别**：方式一是完整工作区，自带 C++ 示例知识地图与 Tracker。方式二是独立 Skill 包，自带完整规则和示例，但需要自己准备 Tracker。
+> **区别**：方式一是完整学习工作区，自带 C++ 示例知识地图、用户画像和完整工作目录；首次开始学习时自动创建个人 Tracker。方式二是独立 Skill 包，自带完整规则和示例；首次运行时会根据目标自动创建 Tracker，但不会预置你的知识范围。
 
 ---
 
@@ -154,11 +154,13 @@ cp -r .claude/skills/interview /your/project/.claude/skills/
 
 ### 换技术栈
 
-1. 复制 `knowledge/TEMPLATE.md` 为 `knowledge/trackers/{你的主题}.md`
+1. 复制 `.claude/skills/interview/templates/tracker.md` 为 `knowledge/trackers/{你的主题}.md`
 2. 填入你的模块和知识点
 3. 告诉 Claude "我要准备 {你的主题} 面试"
 
 示例：`knowledge/trackers/Java微服务.md`、`knowledge/trackers/前端React.md`
+
+或者直接告诉 Claude 你的目标岗位，让它帮你生成初始 Tracker。
 
 ### 加项目深挖
 
@@ -166,7 +168,7 @@ cp -r .claude/skills/interview /your/project/.claude/skills/
 
 ### 调规则
 
-编辑 `references/` 下的文件修改教学方式、评分标准、知识网络扫描范围等。
+编辑 `.claude/skills/interview/references/` 下的文件修改教学方式、评分标准、知识网络扫描范围等。
 
 ---
 
@@ -174,31 +176,31 @@ cp -r .claude/skills/interview /your/project/.claude/skills/
 
 ```
 ai-interview-engine/
-├── CLAUDE.md                         # 入口：全局规则 + 启动说明
-├── SKILL.md                          # 核心：完整学习流程定义
+├── CLAUDE.md                         # 入口：全局规则 + 启动说明（指向 Skill）
 ├── LICENSE                           # MIT License
 ├── .gitignore                        # 排除用户学习数据
+├── CHANGELOG.md                      # 版本变更记录
 ├── README.md                         # 你正在看的这个文件
 ├── README_EN.md                      # English docs
-├── .claude/skills/interview/         # 独立 Skill 包（自包含，可直接复制到其他项目）
-│   ├── SKILL.md                      # Skill 定义（含 disable-model-invocation）
-│   ├── references/                   # 完整规则（随 Skill 一起复制）
+├── .claude/skills/interview/         # 唯一正式 Skill（所有规则和模板在此）
+│   ├── SKILL.md                      # Skill 定义
+│   ├── references/                   # 详细规则（按需加载）
+│   │   ├── teaching.md               # 教学规则
+│   │   ├── knowledge-network.md      # 知识网络
+│   │   ├── evaluation-review.md      # 评分与复习
+│   │   ├── tracker.md                # Tracker 规范
+│   │   └── gotchas.md                # 常见错误
 │   ├── examples/                     # 行为示例
-│   └── templates/tracker.md          # Tracker 模板
-├── references/                       # 详细规则（按需加载，不默认全部读取）
-│   ├── teaching.md                   # 教学规则：分层释放、直观模型、面试追问链
-│   ├── knowledge-network.md          # 知识网络：锚点发散、支线分类、扫描流程
-│   ├── evaluation-review.md          # 评分与复习：四级评分、错误类型、复习角度渐变
-│   ├── tracker.md                    # Tracker 规范：文件格式、更新时机
-│   └── gotchas.md                    # 常见错误：10 个高频踩坑案例
-├── examples/                         # 行为示例（不默认加载）
-│   ├── conceptual-example.md         # 概念型知识示例：std::variant
-│   └── procedural-example.md         # 程序型知识示例：LRU Cache
-├── knowledge/                        # 知识库
-│   ├── trackers/                     # 用户学习数据（已 gitignore）
-│   └── examples/                     # 示例知识地图（参考格式，不跟踪用户数据）
+│   │   ├── conceptual-example.md     # 概念型：std::variant
+│   │   └── procedural-example.md     # 程序型：LRU Cache
+│   └── templates/                    # 模板文件
+│       ├── tracker.md                # Tracker 模板
+│       └── gitignore-snippet         # Git 隐私保护片段
+├── knowledge/
+│   ├── trackers/                     # 个人学习数据（已 gitignore，首次运行自动创建）
+│   │   └── .gitkeep
+│   └── examples/                     # 示例知识地图（参考格式）
 │       └── C++后端.example.md
-│   └── TEMPLATE.md                   # 空白模板
 └── memory/                           # 持久化记忆
     ├── MEMORY.md                     # 记忆索引
     └── user_profile.md               # 用户画像模板
