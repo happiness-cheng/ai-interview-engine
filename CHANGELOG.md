@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.3.3 (2026-06-21)
+
+### Changed
+- 删除根目录 references/、examples/、knowledge/TEMPLATE.md，所有规则只存在于 .claude/skills/interview/
+- README 目录树更新，删除已不存在的根 SKILL.md 和 references/
+- '自带 Tracker' 改为 '首次运行自动创建个人 Tracker'
+- '换技术栈' 和 '调规则' 指向 .claude/skills/interview/ 内的文件
+- 英文 README 同步为三轮流程、A Typical Learning Loop、新安装说明
+
+### Added
+- knowledge/trackers/.gitkeep 保证目录在 git clone 后存在
+- .claude/skills/interview/templates/gitignore-snippet 供独立安装时使用
+- SKILL.md Tracker 初始化 6 步流程（建目录、保护隐私、复制模板、生成模块、确认、开始）
+
+### Fixed
+- 独立 Skill 安装后 Tracker 目录的 Git 隐私保护
+- references/tracker.md 不再内嵌完整模板，改为链接 templates/tracker.md
+
 ## v0.3.2 (2026-06-21)
 
 ### Fixed
