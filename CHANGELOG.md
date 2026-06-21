@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.3.5 (2026-06-21)
+
+### Fixed
+- conceptual-example.md: 首次答对从 Good 改为「即时理解，待变式验证」
+- procedural-example.md: splice 和 LRU 核心机制不再直接评 Good，独立完成保留 Good
+
+### Added
+- 项目驱动模式：references/project-driven.md
+- 硬规则 13-15：项目驱动优先、最小教学、可验证产物
+- 检查当前任务优先级增加「项目/探索目标」
+- Reference 加载规则增加项目驱动触发条件
+
 ## v0.3.4 (2026-06-21)
 
 ### Changed
